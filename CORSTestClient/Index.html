@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-2.1.0.js"></script>
+</head>
+<body>
+    <h3>With CORS Enabled</h3>
+    <input id="getValues" type="button" value="Call API With CORS Enabled" name="getValues" />
+    <pre id="output"></pre>
+    <br/>
+    <input id="getValues2" type="button" value="Call API With No CORS" name="getValues2" />
+    <pre id="output2"></pre>
+
+    <script type="text/javascript">
+        $(function () {
+            alert("Jquery Loaded");
+            var url = "http://localhost:58089/api/values";
+            $("#getValues").click(function () {
+                $.get(url).always(function (object) {
+                    $("#output").text(JSON.stringify(object, null, 4));
+                });
+                return false;
+            });
+
+            var url2 = "http://localhost:58089/api/othervalues";
+            $("#getValues2").click(function () {
+                $.get(url2).always(function (object) {
+                    $("#output2").text(JSON.stringify(object, null, 4));
+                });
+                return false;
+            });
+        }
+        );
+
+    </script>
+</body>
+</html>
